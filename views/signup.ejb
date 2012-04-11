@@ -1,0 +1,4 @@
+<div>Email: <input type='email' id='email' /></div>
+<div>Password: <input type='password' id='password' /></div>
+<div>Username: <inpt type='' id='' /></div>
+<div>Branch:</div>
