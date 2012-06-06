@@ -3,8 +3,10 @@
  * Module dependencies.
  */
 
-var express = require('express')
-  , routes = require('./routes')
+var express = require('express'),
+    routes  = require('./routes'),
+    user    = require('./routes/user')
+
 
 var app = module.exports = express.createServer();
 
@@ -12,7 +14,8 @@ var app = module.exports = express.createServer();
 
 app.configure(function(){
   app.set('views', __dirname + '/views');
-  app.set('view engine', 'jade');
+  app.set('view engine', 'ejs');
+  app.set('view options', {layout : false});
   app.use(express.bodyParser());
   app.use(express.methodOverride());
   app.use(app.router);
@@ -29,12 +32,16 @@ app.configure('production', function(){
 
 // Routes
 app.get('/', routes.index);
-app.get('/signup', user.signup);           //Signup page.
-app.get('/signup/save', user.saveNewUser); //Save content of new user.
-app.get('/login', auth.login);         //Login page.
-app.get('/login/auth', auth.verfiy);   //Authenticate login.
+//app.get('/api/user/getuserinfo', api.user.getinfo);
 
 
+//app.get('/signup', user.signup);           //Signup page.
+
+//app.get('/signup/save', user.saveNewUser); //Save content of new user.
+//app.get('/login', auth.login);         //Login page.
+//app.get('/login/auth', auth.verfiy);   //Authenticate login.
+
+/*
 app.get('/users/top100', user.top100); //Top 100 players.
 app.get('/users/top100/:branch', user.top100) //Top 100 players by branch.
 app.get('/store', store.index); //Store lobby.
@@ -45,6 +52,7 @@ app.get('/lobby/join/:id', game.joinmatch);
 app.get('/match/'); //decide who will go fist
 app.get('/match/:id/createunits', game.createunits); //how the units the user can create
 app.get('/match/:id/savecreatedunits', game.savecreatedunits); //save the units created
+*/
 
 //select who will go first to to select regions
 //inform the user who can go first.

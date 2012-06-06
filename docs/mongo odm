@@ -1,0 +1,106 @@
+db.createCollection("log");
+{game_id: int, 
+ messages: [{id: ObjectId, message: String, created_date: DateObj}]
+ territories: [{id : ObjectId, owned_by: ref_to_user, init_state: ref_to_user, created_date: Date}]
+}
+
+
+//Add in branches_ranks
+db.branches_ranks.save({name: 'Army', ranks: [
+					{title: 'Seaman', available_from_level: '0', available_to_level: '1', created_date: new Date()},
+				        {title: 'Leading Seaman', available_from_level: 2, available_to_level: 3, created_date: new Date()},
+					{title: 'Petty Officer', available_from_level: 4, available_to_level: 5, created_date: new Date()},
+					{title: 'Warrant Officer', available_from_level: 6, available_to_level: 7, created_date: new Date()},
+					{title: 'Midshipman', available_from_level: 8, available_to_level: 9, created_date: new Date()},
+					{title: 'Ensign', available_from_level: 10, available_to_level: 11, created_date: new Date()},
+					{title: 'Sub-Lieutenant', available_from_level: 12, available_to_level: 13, created_date: new Date()},
+					{title: 'Lieutenant', available_from_level: 14, available_to_level: 15, created_date: new Date()},
+					{title: 'Lieutenant Commander', available_from_level: 16, available_to_level: 17, created_date: new Date()},
+					{title: 'Commander', available_from_level: 18, available_to_level: 19, created_date: new Date()},
+					{title: 'Captain', available_from_level: 20, available_to_level: 21, created_date: new Date()},
+					{title: 'Commodore', available_from_level: 22, available_to_level: 23, created_date: new Date()},
+					{title: 'Admiral', available_from_level: 24, available_to_level: 29, created_date: new Date()},
+					{title: 'Admiral of the Fleet', available_from_level: 30, available_to_level: 30, created_date: new Date()}
+					
+				    ], created_date: new Date()});
+
+
+db.branches_ranks.save({name: 'Navy', ranks: [
+					{title: 'Private', available_from_level: '0', available_to_level: '1', created_date: new Date()},
+					{title: 'Corporal', available_from_level: 2, available_to_level: 3, created_date: new Date()},
+					{title: 'Sergeant', available_from_level: 4, available_to_level: 5, created_date: new Date()},
+					{title: 'Sergeant Major', available_from_level: 6, available_to_level: 7, created_date: new Date()},
+					{title: 'Officer Cadet', available_from_level: 8, available_to_level: 9, created_date: new Date()},
+					{title: '2nd Lieutenant', available_from_level: 10, available_to_level: 11, created_date: new Date()},
+					{title: 'Lieutenant', available_from_level: 12, available_to_level: 13, created_date: new Date()},
+					{title: 'Captain', available_from_level: 14, available_to_level: 15, created_date: new Date()},
+					{title: 'Commandant', available_from_level: 16, available_to_level: 17, created_date: new Date()},
+					{title: 'Lieutenant Colonel', available_from_level: 18, available_to_level: 19, created_date: new Date()},
+					{title: 'Colonel', available_from_level: 20, available_to_level: 21, created_date: new Date()},
+					{title: 'Brigadier', available_from_level: 22, available_to_level: 23, created_date: new Date()},
+					{title: 'General', available_from_level: 24, available_to_level: 29, created_date: new Date()},
+					{title: 'Marshal', available_from_level: 30, available_to_level: 30, created_date: new Date()}
+
+				    ], created_date: new Date()});
+
+db.branches_ranks.save({name: 'Air Force', ranks: [
+						{title: 'Aircraftman', available_from_level: '0', available_to_level: '1', created_date: new Date()},
+						{title: 'Corporal', available_from_level: 2, available_to_level: 3, created_date: new Date()},
+						{title: 'Sergeant', available_from_level: 4, available_to_level: 5, created_date: new Date()},
+						{title: 'Warrant Officer', available_from_level: 6, available_to_level: 7, created_date: new Date()},
+						{title: 'Officer Cadet', available_from_level: 8, available_to_level: 9, created_date: new Date()},
+						{title: 'Pilot Officer', available_from_level: 10, available_to_level: 11, created_date: new Date()},
+						{title: 'Flying Officer', available_from_level: 12, available_to_level: 13, created_date: new Date()},
+						{title: 'Flight Lieutenant', available_from_level: 14, available_to_level: 15, created_date: new Date()},
+						{title: 'Squadron Leader', available_from_level: 16, available_to_level: 17, created_date: new Date()},
+						{title: 'Wing Commander', available_from_level: 18, available_to_level: 19, created_date: new Date()},
+						{title: 'Group Captain', available_from_level: 20, available_to_level: 21, created_date: new Date()},
+						{title: 'Air Commodore', available_from_level: 22, available_to_level: 23, created_date: new Date()},
+						{title: 'Air Marshal', available_from_level: 24, available_to_level: 29, created_date: new Date()},
+						{title: 'Marshal of the Air Force', available_from_level: 30, available_to_level: 30, created_date: new Date()}
+
+					  ],created_date: new Date()});
+
+
+
+//Unit
+db.createCollection("units");
+{
+    id: ObjectId,
+    type : 
+    cost
+    health
+    hit_points
+    defense
+    requirements: [aircraft carrier, tank, bunker & tech center]
+    movement_restrictions: [land, sea, air, air craft carrier]
+}
+
+
+//Game
+db.createCollection("games")
+
+//Game Object
+{
+player: REF_id,
+player: REF_id,
+create_date: Date,
+winner: REF_id
+}
+
+
+//User collection.
+db.createCollection("users");
+db.users.save(
+{first_name: 'Armando', 
+ last_name: 'Padilla',
+ username: 'armandopadilla',
+ rank: 'Aircraftman',
+ military_branch: 'Air Force', 
+ total_units_bought: 0,
+ games_won: 0,
+ games_lost: 0,
+ wallet_total_coins: 100,
+ wallet_transaction_log : []
+ type: 'admin'});
+

@@ -1,0 +1,408 @@
+Crons:
+Update rank when winning. 
+Update gold - +5 gold every day if logged in in teh last 2 days.  Stops if not logged into sustem in last 2 days.s
+
+
+Pages
+1. sign up
+	Email
+	Password
+	Username
+	Military Branch
+	
+
+2. Waiting Room
+	click to play.  
+		Whhen user arrives user X's window will update with users.
+
+
+3. Matching engine.
+	By wins.
+	Is updated every 
+
+4. Board.
+
+5. store
+
+6. Top scores
+
+7. Admin section
+	CRUD - unit types
+	CRUD - regions
+	CRUD - ranks
+
+
+8. Auth module
+
+
+
+//MONGO DB.
+use modernconquest; //creates the db
+
+//Add in admins.
+db.users.save(
+{first_name: 'Armando', 
+ last_name: 'Padilla',
+ username: 'armandopadilla',
+ rank: 'Aircraftman',
+ military_branch: 'Air Force', 
+ total_units: 1000,
+ units_bought: 0,
+ won: 0,
+ lost: 0,
+ total_coins: 100,
+ audit_log: [],
+ type: 'admin'});
+  
+
+ created_date: '',
+ rank: '',
+ military_branch: '',
+ medals: [MEDAL_OBJECT],
+ total_units: '', //Will always start with be 1000 units
+ units_bought: '' //As the user uses up more of these we reduce.
+ won: '',
+ lost: '',
+ total_coins: '',
+ audit_log: [LOG_OBJECT],
+ type: ''
+ 
+
+
+
+Player
+{id: '', 
+ first_name: '',
+ last_name: '',
+ user_name: '',
+ created_date: '',
+ rank: '',
+ military_branch: '',
+ medals: [MEDAL_OBJECT],
+ total_units: '', //Will always be 1000 units
+ units_bought: '' //As the user uses up more of these we reduce.
+ won: '',
+ lost: '',
+ total_coins: '',
+ audit_log: [LOG_OBJECT],
+ } 
+
+
+=== Branch Object ===
+Branches_Ranks
+{
+	id: ''
+	name: ''
+	ranks: [RANK_OBJECT],
+	created_date: ''
+}
+
+
+=== Ranks ===
+{
+id: '',
+name: '',
+available_from_level: '',
+availabele_to_level: ''
+created_date: date
+}
+
+
+=== Medals ===
+Note: Does not provide boosts.
+
+Medals
+{
+id: '',
+name: '',
+created_date: '',
+awarded_for: '',
+}
+
+
+
+
+
+
+
+
+-------------------------------
+A person purchases units.
+
+
+
+You know what having a scale will work for defense and attack damage.
+	Attack Damage: 1-100
+	Defense: 1-10
+	Healthy: 1-100
+	Units: 1-1000	
+
+
+A player can only have 5000 units on the board at any given time.
+A player will be given 1000 units.
+A player will be given 100 coins.
+
+Player
+	has units
+	has regions.
+		
+Medals (50)
+
+
+Continents
+	North America
+		Juno Alaska
+		Honolulu
+		Los Angeles
+		Miami
+		Cuba
+		DC
+		Mexico DF
+		canada
+
+	south America
+		Brazil
+		Columbia/Venezuela
+		Peru/Bolivia/Chile
+		Argentina
+		
+		
+	Antartica
+		All.
+
+	Africa
+		
+
+	Europe
+	Asia
+	Australia
+	GreenLand
+		
+	
+
+continents
+	Can only be attacked if the user has access to it.
+	a user without a navy cant attack a territory acrross an ocean.
+	A user without a air force cant attack a terriroty across an ocean without a navy.
+
+
+Armies (You start off with 500 units - can buy more, increments of 50 unit.)
+	has a color
+	has a name
+	has number of wins
+	has number of losses
+	has a rank
+		
+	has a type
+		Army
+		Navy
+		Air Force
+
+
+
+		
+
+	Military Warfare.	(Note: defense adds health to compelte unit.  defense = defense+defensse+defense/total defenses as a percent.  Then add this to the healths of all items in unit.)	
+	
+	Attack Damage: 1-100
+	Defense: 1-10
+	Health: 1-100
+	Units: 1-1000	
+
+
+	
+	Infantry
+		Cost: 1 unit.
+		Health: 100
+		Attack Damage: 5 hit point.
+		Defense: 3 defense.
+		Defense from airborn attack: 0
+		Movement Restrictions: Land.  Sea only if owning AC.
+		Restriction: Can not attack sea
+			     Can not attack air.
+		
+	Tanks
+		Cost: 25 units
+		Health: 100
+		Attack Damage: 20 hit point.
+		Defense: 15 defense
+		Defense from airborn attack: 0
+		Movement Restricts: Land.  sea only if owning Battle ship.
+		Restrictions: Can not attack air
+			      can not attack sea.
+
+
+	Artillery
+		Cost: 25 units
+		Health: 100
+		Attack Damage: 20 hit point.
+		Attack Damage, Air born threat:  10 hit points.
+		Defense: +10 defense point towards fortefying on land based threats. 
+		Defense: +6 dfense point toward fortefying on air based threats.
+		Movement Restricts: Land.  sea only if owning Battle ship.
+		Restrictions: Can not attack sea.
+		Penalty: None.
+
+
+	Nuclear Missle:
+		Cost: 200 units
+		Attack Damage: 100% of total unit health AND 100% of total unit defense.
+		Requirements: Must own a bunker.  If bunker is destroyed and still have missles you cant use them.
+			      If attacking a foreign soil must have battleship near enemy.
+		Penalty:  lose 1 play, 
+			  cant fortefy until after 3 plays.
+			  No damage to own units
+			  Will not receive any units from defeated position.
+		
+
+	Attack Subs 	
+		Cost: 30 unit.
+		Health: 100
+		Attack Damage: 20 hit point.
+		Defense: 10 defense, applied to battleships.
+		Restrictions: Can only attack battleships and other subs.
+
+
+	Aircraft carrier 
+		Cost: 150 unit.
+		Health: 100
+		Attack Damage: 25 hit point, can only attack battleships and subs.
+		Defense: 15 defense, applied to AC and aircrafts
+		Restrictions: Can only attack sea based targets.
+
+	F14 Jet
+		Cost: 100 unit.
+		Health: 100
+		Attack Damage: 30 hit point.
+		Defense: 10 defense
+		Requirement:  Aircraft carrier.
+		Restrictions: None.
+
+
+	JSF - Joint Strike Fighter
+		Cost: 120 unit.
+		Health: 100
+		Attack Damage: 30 hit point.
+		Defense: 10 defense
+		Requirement:  Aircraft carrier, Bunker & Tech center
+		Special:  Lower defense of enemy by 20%
+		
+
+	UAV	
+		Cost: 80 unit.
+		Health: 100
+		Attack Damage: 20 hit point
+		Defense: 7 defense
+		Requirement: Bunker & Technology center.
+
+
+
+	Information warfare.
+	Hackers 
+		Cost: 150 unit.
+		Health: 100
+		Attack Damage: 0
+		Defense: 0
+		Special:  
+			Will lower the defenses of enemy by 80%
+			can not attack in same move. Attacking with this piece will be seen as an attack.
+			Will not show attack message to enemy unless the enemy has "Intrucio Detection Specialist"
+		Requirement: Bunker & Technology center.
+		
+	Intrusion Detection Specialist
+		Cost: 100 unit.
+		Health: 100
+		Attack Damage: 0
+		Defense: 0
+		Special:  
+			Will show hacker attack.  Will give the user the ability to either move the units from the location 			under attack or increase the defense by 40%.  If the attacker with the hacker does not attack in 				the next go 40% additional is  aded back on.  By the third move of the enemy the defense is 100% 				back to normal.
+			CAn be applied to one area only.
+
+		Requirement: Bunker & Technology center.
+
+
+	Underground bunkers
+		Cost: 300 unit.
+		Health: 500
+		Attack Damage: 0
+		Defense: 0
+		Special: Allows for advanced warfare.  
+			
+
+	Economic warfare.
+
+		Sanctions (x5)
+			Cost: 150 unit.
+			Health: 0
+			Attack Damage: Reduces the health of all units by 20% for the terriroty only.
+			Defense: 0
+			Special:  
+				Can not combine with military weapons.
+				Will constitute an attack.
+			Requirement: Aircraft carrier near the attack land.	
+						
+
+	Clandestine Services
+		
+		Social uprising (x3).
+		Cost: 150 units
+		Health: 0
+		Attack Damage: Reduces health of all units by 40%
+
+		Media Propoganda (x5):
+			Cost: 100 units
+			Health: 0
+			Defense:  Increases defense after social uprising by 55%, Increases defense by 10% if used without 			a social uprising.
+			Attack Damage: Reduces health of all units by 10%.
+
+		
+
+
+
+
+Set up.
+1. User buys armies
+2. User selects what terrtories to select.
+3. User determines how many of their units should be for fortefying or attacking.
+4. Turn based system.
+	1. User X selects which territory to attack at random
+	2. user X attacks.
+		If User X is attacking User Y then:
+			Damange to User X's units is 30% of total User Y's attack damage.
+			If resulting total damage is complete destructin of unit AND user's Y continues to have health
+			Attack failed, User Y receives 5% of attacking user X's attackig units.
+
+	3. User X is given results of attack.
+		results:
+			1. Destroyed.
+				On destroyed - if didnt use a nuclear options award army of user x, 10% of User Y's army 				in units.  If they destroyed a bunker, nuclear missle is option to select.
+
+				If nuclear option user does not win any units.  can not fortefy for 10 moves. 
+
+				If spies used, 20% of army is given in units.  Loyalty of that territory is reduced by 10%
+				
+			 	User can select not to forteffy.  Will be open to take over by other users.
+				If the other users decide to attack, they must attack it with double the amount of units
+				that were iitially there.  
+
+				Fortefy = user must place 5% of the original attacking units and leave them there.
+
+			2. Damage delt  (% damage done)
+				Show user X how much damage was done.  
+				Show user Y how much damage was taken.			
+	
+	4. User X is given option to Surrender, fortefy, move armies around.  
+	5. User Y is given the optin to surrender, move armies around, or if the territory is only damaged add more units 	there
+
+5.  Win condition.
+	User takes over all territories.
+
+
+What to buy
+1. Units (5 gold coind per 1 unit) ($1.00 for 100 units), ($5.00 for 500 units), ($10 for 1000 units)
+2. Food (soup, bread, full corse meal) - soup (x10) = $1.00, bread = (x20) $2.00, full course meal (x5) $5.00 (feeds half your army.
+3. Free turn ($5.00)
+4. Medal of Thorns ($1.00 - gives your units +2 offense) (100 gold coins)
+5. Medal of Amanda ($1.00 - gives your units +5 defense) (100 gold coins)
+6. Medal of Snoopy ($2.00 - revive 50 units.) (200 gold coins)
+ 

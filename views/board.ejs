@@ -1,0 +1,358 @@
+
+<!--
+//Make a call to determine the turn of each player.
+//get the turn
+//push out the specific message to both users.
+//if first user then allow to select an army.
+//call to purchase item
+	cost,
+	user doing the purchasing
+	what is being purchased.
+//Call:  On 'done' building army - check if this is the second user.  If not the second user show the 'select army' window to the second user. If it is the second user. go to 'select territories' at random.  I wonder if selecting territories is first. That way the user can build their army accordingly. humm.
+//randomly select territories for each of the users.
+//Call:  save units which will defend a specific territory.
+//Call: user has selected a territory.
+	//Fetch data of opponents units in territory.
+
+//Call: user ops to attack the territory
+	//oppenent id
+	//territory id
+	//units who are attacking.
+	//return:  how much damange is done to the territory.
+
+//call: For each turn check if the 100% anihilation of the users opponent has resulted.  if not continue. Otherwise stop and award win to user.
+//Call:  Fetch who the opponent is.
+
+//Note calls ar also events.
+-->
+<html>
+<head>
+<style>
+.island {
+
+width:50px;
+height:50px;
+display:block;
+border-radius:50px;
+-moz-border-radius:50px;
+-webkit-border-radius:50px;
+-khtml-border-radius:50px;
+font-size:20px;
+color:#fff;
+line-height:100px;
+text-align:center;
+background:#000
+
+
+}
+
+
+.continent{
+width:100px;
+height:100px;
+display:block;
+border-radius:50px;
+-moz-border-radius:50px;
+-webkit-border-radius:50px;
+-khtml-border-radius:50px;
+font-size:20px;
+color:#fff;
+line-height:100px;
+text-align:center;
+background:#000}
+
+.c1 {
+
+	background: grey;
+	position: relative;
+	top: 10px;
+	left: 200px;
+}
+
+
+.c2 {
+
+	background: black;
+	position: relative;
+	top: -10px;
+	left: 260px;
+}
+
+.c3 {
+
+	background: grey;
+	position: relative;
+	top: 80px;
+	left: 300px;
+
+
+}
+
+.c4 {
+
+	background: black;
+	position: relative;
+	top: 80px;
+	left: 400px;
+
+
+}
+
+
+
+.c5 {
+
+	background: grey;
+	position: relative;
+	top: -250px;
+	left: 600px;
+
+
+}
+
+
+
+.c6 {
+
+	background: black;
+	position: relative;
+	top: -380px;
+	left: 505px;
+
+
+}
+
+
+.is1{
+
+	background: grey;
+	position: relative;
+	top: -500px;
+	left: 150px;
+}
+
+
+
+.is2{
+
+	background: black;
+	position: relative;
+	top: -580px;
+	left: 600px;
+}
+
+
+
+</style>
+<script src="js/jquery-1.7.2.min.js"></script>
+<script src="js/jquery-ui-1.8.20.custom.min.js"></script>
+<script>
+$("#continent-1").live("click", function()
+{
+
+
+	//check if its a defense select or office select.
+	alert("here");
+
+});
+
+function init()
+{
+
+	//Show welcome message.
+	$("#welcome-modal").dialog({
+			height: 140,
+			modal: true
+	});
+
+	//make ajax call
+	//on success
+		//Close modal
+			//On close modal show initilize who will move fist.
+			$("#who-goes-next-modal").dialog({
+				height: 140,
+				modal: true
+			});
+			//make event call to get random number
+				//Close modal and display "init terrtory selection"
+			$("#select-territory-modal").dialog({
+				height: 140,
+				modal: true
+			});
+			//Event: select territories at random
+
+			$("#show-user-territory-modal").dialog({
+				height: 140,
+				modal: true
+			});
+
+			$("#build-army-modal").dialog({
+				height: 340,
+				width: 600,
+				modal: true
+
+			});
+			//Event:  Once the user clicks Done, send all the units selected.
+			//Lower the number of units.
+
+			$("#defend-buildarmy-modal").dialog({
+
+				height: 340,
+				width: 600,
+				modal: true
+			});
+			//Event:  User will select the force to defend a territory.
+			//Event:  User clicks done per territory.  Saves units and territory in defense mode.
+			//System:  Saves data.
+			//System:  checks if the territories already have defenses. If not continue, otherwise contunie to next
+			//step.
+
+
+			//We start the attack
+			//while (wincondition is false) //there isnt a winer yet...
+			//Show user's possible move
+			$("#user-action-modal").dialog({
+				title: "Make a move",
+				height: 150,
+				modal: true,
+				buttons: {
+							"Attack"  : function(){},
+							"Fortefy" : function(){},
+							"Surrender Territory" : function(){}
+
+						 }
+
+			});
+
+			//User selects a move
+				//if attack
+				$("#ini-attack-modal-2").dialog({
+
+					height: 150,
+					modal: true
+
+				});
+
+				$("#select-terr-to-attack-modal").dialog({
+
+									height: 150,
+									modal: true
+
+				});
+				//Event: User preps terittory to attack
+				//System: Saves user and territory the user will attack
+
+
+
+				$("#select-offense-modal").dialog({
+
+									height: 150,
+									modal: true
+
+				});
+
+				//Event: User selects offensive army to attack territory and clicks attack
+				//System: Saves the units and territory to attack.
+				//System: calculates damage done to both armies.
+				//System: Displayes next modal. (damage results)
+
+
+				$("#offensive-attack-results-modal").dialog({
+
+									height: 150,
+									modal: true
+
+				});
+				//Show the calcs for the deffensive player
+
+				$("#defense-attack-results-modal").dialog({
+
+									height: 150,
+									modal: true
+
+				});
+
+				//If fortefy.
+				//System: Have the user select a territory to fortefy
+				$("#fortefy-select-territory-modal").dialog({
+
+													height: 150,
+													modal: true
+
+				});
+
+				//Event: User makes api call to save territory to defend
+				//System:  Logs event.
+				//Show army selection modal
+				$("#fortefy-select-army-modal").dialog({
+
+																	height: 150,
+																	modal: true
+
+				});
+
+				//Event:  User saves army to use to defend territory
+
+				//If Surrender
+				//System: Show select territory to surrender modal
+				$("#surrender-select-territory-modal").dialog({
+
+																					height: 150,
+																					modal: true
+
+				});
+
+				//Event: User selects a territory to surrender
+				//System: Logs it
+				//System: surrenders territory (do logic to surrender)
+
+
+
+
+
+				//System: Check for win condition.
+				//If no win condition go back to start of loop.
+				//if win
+					//System: Show you win modal
+					//System: Award units to winner
+					//System: Award some units to the loser.
+
+
+
+}
+</script>
+<LINK href="css/ui-lightness/jquery-ui-1.8.20.custom.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+	<!-- Left Nav -->
+	<div id="leftnav" style="float:left;">
+
+		<div style="background-color: grey; width: 150px; height: 50px; margin: 5px;">Rank: %Fetch Rank%</div>
+
+		<div style="background-color: red; width: 150px; height: 50px; margin: 5px;">Total units: %get default units%</div>
+
+		<div>
+			<div style="background-color: blue; width: 150px; height: 500px;margin: 5px;">Your Military</div>
+			<!-- personnel here along with their counts -->
+		</div>
+
+	</div>
+
+	<div style="float:left" id="map-container">
+		<!-- Territories -->
+		<div class="continent c1" id="continent-1"></div>
+		<div class="continent c2" ></div>
+		<div class="continent c3" ></div>
+		<div class="continent c4" ></div>
+		<div class="continent c5" ></div>
+		<div class="continent c6" ></div>
+
+		<!-- Islands -->
+		<div class="island is1"></div>
+		<div class="island is2"></div>
+	</div>
+
+
+</body>
+</html>
