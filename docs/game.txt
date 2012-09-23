@@ -1,0 +1,62 @@
+User Types 
+	Barista
+	Coffee Drinker
+	
+
+Level up
+	Barista:
+	Part time er. (0-1 hour or 20 drinks)
+	Full Time er. (1-5 hours or 80 drinks)
+	Barista	      (5-10 hours or 200 drinks)
+	Espresso Art Barista (10-20 hours or 400 drinks)
+	Mentor Barista (20 hours or 800 drinks)
+	
+		
+	Customer:
+	Intern at new job picking up orders
+	Coffee doesnt cut it anymore
+	the regular
+	The complicated order guy
+	"You didnt add enough foam to it" guy
+	"I didnt get a latte art" guy
+	The "im a writer" guy
+	Addict
+
+http://www.holytaco.com/9-most-annoying-people-starbucks/
+
+
+How to level up Barista:
+	Time spent making drinks
+	Rating from customers
+	Number of drinks done.	
+
+How to level up Customer
+	Drinks bought
+	Drinks rated.
+	time spent in game.
+	
+Purchase
+	Bastistas
+	Pressers   $1.00 	(+.5 on rating drinks)
+	Espresso machines $2.00	(+.10 on rating drinks)
+	aprons	   $.50		(+.3 on rating drinks)
+	move to new location in virtual world. ($30.00, $20.00, $10.00 tier system basedon population)
+	
+
+	Customers
+	"Know it all" Blazer
+	"Know it all" Laptop
+	Study Group
+	Refined "know it all" mouth
+	"Know it all" glasses
+	"You dont have fresh beans"  know it all shirt
+	More money
+	
+
+
+Top Baristas
+
+Top Customer
+
+	
+	

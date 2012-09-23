@@ -1,0 +1,96 @@
+
+<!--
+
+Welcome message shown to both players
+Call:  check another user has made it to the same game id.
+Push from Server:  yes, user arrived show next modal.
+-->
+<div id="welcome-modal">Welcome.  We are waiting for your opponent to arrive</div>
+
+<!-- Who will go next -->
+<div id="who-goes-next-modal">We are determinng who will go first at random</div>
+
+<!-- Randomly Selecting Territories for user -->
+<div id="select-territory-modal">We are randomly selecting your territory</div>
+
+
+<!-- Show territories to user -->
+<div> Your territories are shown in %color% </div>
+
+<!-- Start to build army -->
+<!-- Build your army -->
+<div id="build-army-modal">
+<div>Select your army</div>
+<div>
+	Army | Navy | Airforce | Cyber | Misc
+	<div>
+		Foot Soldier
+		Cost: 1 unit
+		Attack Damage: 5 HP
+		Defense: 3
+		Movement Restrictions:
+		restrictions:
+		<div>Enlist</div>
+	</div>
+
+
+	<div>Tank</div>
+	<div>Artillery Cannon</div>
+	<div>Nuclear Missible</div>
+	<div>Attack Sub</div>
+	<div>Aircraft carrier</div>
+	<div>F14 Jet</div>
+	<div>JSF Jet</div>
+	<div>UAV</div>
+	<div>Hacker</div>
+	<div>Intrusion Specialist</div>
+	<div>Underground Bunker</div>
+	<div>Economic Sanctions</div>
+	<div>Clandentine Services</div>
+
+	<div>Done</div>
+</div>
+</div>
+
+<!--end build your army -->
+
+<!-- Build your defenses -->
+<div id="defend-buildarmy-modal">
+<div>You have N territories to defend.</div>
+<div>Build an army to defend each territory - you must have some for your attacking force.</div>
+<div>
+	<!-- see the select army modal -->
+	<div>Done</div>
+</div>
+</div>
+
+<!-- Your Move! -->
+<div id="user-action-modal">What do you want to do?</div>
+
+
+<!-- ATTACK -->
+<!-- messages during initial strike -->
+<div id="ini-attack-modal-1">You launch a preemptive strike again %user%.</div>
+<div id="ini-attack-modal-2">You launch your military might on %user%.</div>
+
+
+<div id="select-terr-to-attack-modal">Select territory to attack</div>
+<div id="select-offense-modal">Select units you want to use for your attack.</div>
+
+<div>your attackng your opponents territory</div>
+<div id="offensive-attack-results-modal">your attack on territory %X% resulted in 000% damange.</div>
+
+<!-- Attackk Response to Opponent -->
+<div id="defense-attack-results-modal"> You have been attacked at territory %X%.  You have suffered:
+	List of casulties and & damange here</div>
+<!-- Go to "Your Move!" -->
+
+
+<!-- FORTEFY -->
+<div id="fortefy-select-territory-modal">Select territory to fortefy</div>
+<div id="fortefy-select-army-modal">Select Defensive units to fortefy with</div>
+<div>Done</div>
+
+<!-- SURRENDER TERRITORY -->
+<div id="surrender-select-territory-modal">Select Territory to surrender</div>
+

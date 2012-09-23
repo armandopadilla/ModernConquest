@@ -1,0 +1,14 @@
+ModernConquest.
+Event list. = API List
+//Event:: check if its a defense select or office select.
+//API:: Determine who will go first.
+//Api:: Select territory to be. Grey or Black as return.
+//Api:: Save all units selected.
+//Api:: Log event.
+//Api:: Save defensive unit for territory
+//API:: Check if users are done setting up defensive units.
+//API:: Does one user taken over all the territories?  <--- winning condition check.
+//API:: Attack territory with specific units.
+//API:: Get attack damange done to units. - Offense user
+//API:: Get attack damage done to units.  - Defenseive use.
+
